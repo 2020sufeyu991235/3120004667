@@ -1,10 +1,9 @@
-package package_01;
+package package01;
 
 import com.ibm.icu.text.CharsetDetector;
 import com.ibm.icu.text.CharsetMatch;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedList;
@@ -35,7 +34,7 @@ public class main {
             CharsetMatch charsetMatch=charsetDetector.detect();
             encoding=charsetMatch.getName();
             //匹配常用的字符集
-            if(encoding.equals("GB18030")||encoding.equals("UTF-8")||encoding.equals("UTF-16LE")||encoding.equals("UTF-16BE")){
+            if("GB18030".equals(encoding)|| "UTF-8".equals(encoding)|| "UTF-16LE".equals(encoding)|| "UTF-16BE".equals(encoding)){
                 return encoding;
             }
             else {
@@ -43,7 +42,7 @@ public class main {
                 CharsetMatch[] charsetMatches=charsetDetector.detectAll();
                 for(CharsetMatch match:charsetMatches){
                     encoding=match.getName();
-                    if(encoding.equals("GB18030")||encoding.equals("UTF-8")||encoding.equals("UTF-16LE")||encoding.equals("UTF-16BE")){
+                    if("GB18030".equals(encoding)|| "UTF-8".equals(encoding)|| "UTF-16LE".equals(encoding)|| "UTF-16BE".equals(encoding)){
                         return encoding;
                     }
                 }
@@ -68,8 +67,9 @@ public class main {
                         list_char.clear();
                     }
                 }
-                else if(!Character.toString(c).matches("[,，、：:\"“”\s\n\r《》*()（）—]"))
+                else if(!Character.toString(c).matches("[,，、：:\"“”\s\n\r《》*()（）—]")) {
                     list_char.add((char)c);
+                }
             }
             bufferedReader.close();
         } catch (IOException e) {
@@ -98,28 +98,28 @@ public class main {
                 repeat_rate = (float) repeat_number / size;
                 if (size < 10) {
                     if (repeat_rate > 0.75) {
-                        list_sentence_plagiarism.get(i).setRepeat_number(repeat_number);
+                        list_sentence_plagiarism.get(i).setRepeatNumber(repeat_number);
                         break;
                     }
                 } else {
                     if (repeat_rate > 0.7) {
-                        list_sentence_plagiarism.get(i).setRepeat_number(repeat_number);
+                        list_sentence_plagiarism.get(i).setRepeatNumber(repeat_number);
                         break;
                     }
                 }
             }
-            if(list_sentence_plagiarism.get(i).getRepeat_number()==0) {
+            if(list_sentence_plagiarism.get(i).getRepeatNumber()==0) {
                 for (int j = 0; j < i; j++) {
                     repeat_number = contrast(list_sentence_origin.get(j), list_sentence_plagiarism.get(i));
                     repeat_rate = (float) repeat_number / size;
                     if (size < 10) {
                         if (repeat_rate > 0.75) {
-                            list_sentence_plagiarism.get(i).setRepeat_number(repeat_number);
+                            list_sentence_plagiarism.get(i).setRepeatNumber(repeat_number);
                             break;
                         }
                     } else {
                         if (repeat_rate > 0.7) {
-                            list_sentence_plagiarism.get(i).setRepeat_number(repeat_number);
+                            list_sentence_plagiarism.get(i).setRepeatNumber(repeat_number);
                             break;
                         }
                     }
@@ -133,7 +133,7 @@ public class main {
         int size = 0,repeat_number=0;
         for (Sentence sentence : list_sentence_plagiarism) {
             size += sentence.getSize();
-            repeat_number += sentence.getRepeat_number();
+            repeat_number += sentence.getRepeatNumber();
         }
         return (double)Math.round((float)repeat_number/size*100)/100;
     }
@@ -153,16 +153,17 @@ public class main {
         //该列表存放句子对象
         List<Sentence> list_sentence_origin = new LinkedList<>();
         List<Sentence> list_sentence_plagiarism = new LinkedList<>();
-        /*File file_origin = new File("./test_text/orig.txt");
-        File file_plagiarism = new File("./test_text/orig_0.8_dis_15.txt");*/
+        File file_origin = new File("./test_text/orig.txt");
+        File file_plagiarism = new File("./test_text/orig_0.8_dis_15.txt");
+        File file_calculate=new File("./test_text/Test_Write.txt");
         //文件读取
-        File file_origin=getFile(args[0]);
+        /*File file_origin=getFile(args[0]);
         File file_plagiarism=getFile(args[1]);
         File file_calculate=getFile(args[2]);
         if(file_origin==null||file_plagiarism==null||file_calculate==null){
             System.out.println("检测到文件不存在，程序终止");
             System.exit(1);
-        }
+        }*/
 
         main main=new main();
 
