@@ -1,20 +1,19 @@
-package package_01;
+package package01;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 import static org.hamcrest.Matchers.closeTo;
 import static org.junit.Assert.*;
-import static package_01.main.getFile;
+import static package01.Main.getFile;
 
 import org.junit.Test;
 
 public class mainTest {
-    main main=new main();
+    Main main=new Main();
 
     @Test
     public void test_getFile() {
@@ -57,9 +56,6 @@ public class mainTest {
         File file=new File(path);
         List<Sentence> list=new LinkedList<>();
         main.sentence_division(file,list,"UTF-8");
-        /*for (Sentence sentence : list) {
-            System.out.println(sentence.getList());
-        }*/
         assertEquals(3,list.size());
     }
 
@@ -105,19 +101,18 @@ public class mainTest {
 
         //句子连续对比
         main.continuous_contrast(list_sentence_origin,list_sentence_plagiarism);
-        assertEquals(7,list_sentence_plagiarism.get(0).getRepeat_number());
-        assertEquals(15,list_sentence_plagiarism.get(1).getRepeat_number());
-        assertEquals(5,list_sentence_plagiarism.get(2).getRepeat_number());
-        assertEquals(8,list_sentence_plagiarism.get(3).getRepeat_number());
+        assertEquals(7,list_sentence_plagiarism.get(0).getRepeatNumber());
+        assertEquals(15,list_sentence_plagiarism.get(1).getRepeatNumber());
+        assertEquals(5,list_sentence_plagiarism.get(2).getRepeatNumber());
+        assertEquals(8,list_sentence_plagiarism.get(3).getRepeatNumber());
     }
 
     @Test
     public void calculate() {
         List<Sentence> list=new LinkedList<>();
         list.add(new Sentence(new LinkedList<>(),10,6));
-        list.add(new Sentence(new LinkedList<>(),31,29));
-        System.out.println(main.calculate(list));
-        //assertThat(main.calculate(list),closeTo(0.66,0.02));
+        list.add(new Sentence(new LinkedList<>(),20,14));
+        assertThat(main.calculate(list),closeTo(0.66,0.02));
     }
 
     @Test
@@ -133,7 +128,7 @@ public class mainTest {
         strings[0]="./test_text/Test_Continuous_Contrast_Origin.txt";
         strings[1]="./test_text/Test_Continuous_Contrast_Plagiarism.txt";
         strings[2]="./test_text/Test_Write.txt";
-        package_01.main.main(strings);
+        Main.main(strings);
         String calculate=null;
         try {
             BufferedReader bufferedReader=new BufferedReader(new InputStreamReader(new FileInputStream(new File(strings[2])), StandardCharsets.UTF_8));

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/src/package_01/Main.java" charset="GBK" />
-    <file url="file://$PROJECT_DIR$/src/package_01/Test.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/package01/Main.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/package01/Test.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/test/package01/mainTest.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/test_text/Test_GB18030.txt" charset="GBK" />
   </component>
 </project>

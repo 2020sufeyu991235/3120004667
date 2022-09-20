@@ -1,14 +1,17 @@
-package package_01;
+package package01;
 
 import java.util.List;
 
+/**
+ * @author 玊非玉
+ */
 public class Sentence {
     List<Character> list;
-    int size,repeat_number;
-    public Sentence(List<Character> list,int size,int repeat_number){
+    int size, repeatNumber;
+    public Sentence(List<Character> list,int size,int repeatNumber){
         this.list=list;
         this.size=size;
-        this.repeat_number=repeat_number;
+        this.repeatNumber=repeatNumber;
     }
 
     public List<Character> getList() {
@@ -27,11 +30,11 @@ public class Sentence {
         this.size = size;
     }
 
-    public int getRepeat_number() {
-        return repeat_number;
+    public int getRepeatNumber() {
+        return repeatNumber;
     }
 
-    public void setRepeat_number(int repeat_number) {
-        this.repeat_number = repeat_number;
+    public void setRepeatNumber(int repeatNumber) {
+        this.repeatNumber = repeatNumber;
     }
 }

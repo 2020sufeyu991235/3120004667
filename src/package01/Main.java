@@ -9,7 +9,7 @@ import java.nio.file.Path;
 import java.util.LinkedList;
 import java.util.List;
 
-public class main {
+public class Main {
     //判断文件是否存在
     public static File getFile(String path){
         File file=new File(path);
@@ -153,19 +153,19 @@ public class main {
         //该列表存放句子对象
         List<Sentence> list_sentence_origin = new LinkedList<>();
         List<Sentence> list_sentence_plagiarism = new LinkedList<>();
-        File file_origin = new File("./test_text/orig.txt");
+        /*File file_origin = new File("./test_text/orig.txt");
         File file_plagiarism = new File("./test_text/orig_0.8_dis_15.txt");
-        File file_calculate=new File("./test_text/Test_Write.txt");
+        File file_calculate=new File("./test_text/Test_Write.txt");*/
         //文件读取
-        /*File file_origin=getFile(args[0]);
+        File file_origin=getFile(args[0]);
         File file_plagiarism=getFile(args[1]);
         File file_calculate=getFile(args[2]);
         if(file_origin==null||file_plagiarism==null||file_calculate==null){
             System.out.println("检测到文件不存在，程序终止");
             System.exit(1);
-        }*/
+        }
 
-        main main=new main();
+        Main main=new Main();
 
         //句子划分生成句子对象存放进列表
         Path path_origin= Path.of(file_origin.getPath());
